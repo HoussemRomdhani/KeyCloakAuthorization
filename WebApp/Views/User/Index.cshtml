@@ -1,0 +1,39 @@
+﻿@using WebApp.ViewModels
+@model List<UserWithRolesViewModel>
+
+@{
+    ViewData["Title"] = "User List";
+}
+
+<h2>Users</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Username</td>
+                <td>@user.Roles</td>
+                <td>
+                    @if (user.CanAssignRole)
+                    {
+                        @Html.ActionLink("Assign Role", "AssignRole", new { id = @user.Id }, new { @class = "btn btn-warning btn-sm", style="margin-right:5px" })
+                    }
+                    @if (user.CanUnAssignRole)
+                    {
+                        @Html.ActionLink("Unassign Role", "UnassignRole", new { id = @user.Id }, new { @class = "btn btn-danger btn-sm", style = "margin-right:5px" })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+﻿@using WebApp.ViewModels
+@model AssignOrUnassignRoleModel
+
+@{
+    ViewData["Title"] = "Assign Role";
+}
+
+<h2>Assign Role</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AssignRole" method="post">
+            <input type="hidden" asp-for="UserId" />
+
+            <div class="form-group">
+                <label>Select Role</label>
+                <select asp-for="RoleId" class="form-control">
+                    @foreach (var role in Model.Roles)
+                    {
+                        <option value="@role.Id">@role.RoleName</option>
+                    }
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-2">Assign Role</button>
+        </form>
+    </div>
+</div>

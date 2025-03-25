@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "f7a97cfb-992e-4690-b143-ea4bc84f0b94",
+		"name": "key-cloak",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "1287326"
+	},
+	"item": [
+		{
+			"name": "retrieve-access-token-for-user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "api",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "o65ZzBvhoV8QBN9JmuxPQWVGTe6XP5st",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "api-user",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "user",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8080/realms/demo/protocol/openid-connect/token"
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve-access-token-for-admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "api",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "o65ZzBvhoV8QBN9JmuxPQWVGTe6XP5st",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "api-admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8080/realms/demo/protocol/openid-connect/token"
+			},
+			"response": []
+		},
+		{
+			"name": "api-anonymous",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5157/api/anonymous"
+			},
+			"response": []
+		},
+		{
+			"name": "api-manage",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5157/api/anonymous"
+			},
+			"response": []
+		},
+		{
+			"name": "api-read",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5157/api/anonymous"
+			},
+			"response": []
+		}
+	]
+}
