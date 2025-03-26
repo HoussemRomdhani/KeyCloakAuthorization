@@ -15,3 +15,8 @@ docker-compose -f key-cloak.yml up
 ### 4 Run web api 
 
 ### 5 Call enpoints 
+
+
+### References
+"AspNetCore.Authorization" expects roles in a claim (field) named "roles". And this claim must be an array of string (multivalued). You need to make some configuration on Keycloak side.
+https://stackoverflow.com/questions/56327794/role-based-authorization-using-keycloak-and-net-core
