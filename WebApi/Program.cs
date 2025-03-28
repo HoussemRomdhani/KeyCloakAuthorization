@@ -10,6 +10,15 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy(name: "AllowAngularClient",
+                              policy =>
+                              {
+                                  policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                              });
+        });
+
         // Keycloak settings
         string authority = "http://localhost:8080/realms/demo"; // Keycloak Realm URL
         string audience = "api"; // Client ID from Keycloak
@@ -61,6 +70,8 @@ public class Program
                 options.DarkMode = false;
             });
         }
+
+        app.UseCors("AllowAngularClient");
 
         app.UseAuthentication();
         app.UseAuthorization();
