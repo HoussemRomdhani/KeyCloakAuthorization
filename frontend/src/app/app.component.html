@@ -5,24 +5,12 @@
 <button *ngIf="isLoggedIn" (click)="manage()">Manage</button>
 <button *ngIf="isLoggedIn" (click)="read()">Read</button>
 
-<!-- <div *ngIf="isLoggedIn">
-    <div *ngIf="userProfile">
-        <h2>User Profile</h2>
-        <p><strong>Username:</strong> {{ userProfile.username }}</p>
-        <p><strong>Email:</strong> {{ userProfile.email }}</p>
-        <p><strong>First Name:</strong> {{ userProfile.given_name }}</p>
-        <p><strong>Last Name:</strong> {{ userProfile.lastName }}</p>
-      </div>
-</div> -->
-
-<div *ngIf="isLoggedIn">
-  <div *ngIf="userInfo">
+<div *ngIf="isLoggedIn && userInfo">
     <h2>User Profile</h2>
     <p><strong>Username:</strong> {{ userInfo.preferred_username }}</p>
     <p><strong>Email:</strong> {{ userInfo.email }}</p>
     <p><strong>First Name:</strong> {{ userInfo.given_name }}</p>
     <p><strong>Last Name:</strong> {{ userInfo.family_name }}</p>
-  </div>
 </div>
 <hr/>
 

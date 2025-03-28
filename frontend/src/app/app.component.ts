@@ -1,15 +1,12 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
 import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  title = 'frontend';
   isLoggedIn: boolean | null = null;
   userInfo: any;
   apiResult: any;
