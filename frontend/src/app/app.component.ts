@@ -10,7 +10,6 @@ export class AppComponent implements OnInit {
   isLoggedIn: boolean | null = null;
   userInfo: any;
   apiResult: any;
-
   constructor(private authService: AuthService, private apiService: ApiService) {
   }
 
@@ -27,23 +26,54 @@ export class AppComponent implements OnInit {
   }
 
   manage() {
-    this.apiResult = null;
-     this.apiService.manage().subscribe(value =>{
-      this.apiResult = value;
-    })
+    this.clean();
+     this.apiService.manage().subscribe({
+      next: (value) => {
+        this.apiResult = {
+          success : true, 
+          data: value
+        }
+      },
+      error: (error) => {
+        this.apiResult = {
+          success : false, 
+          data: error
+        }
+      }
+     } 
+    
+  )
   }
 
   read() {
-    this.apiResult = null;
-    this.apiService.read().subscribe(value =>{
-     this.apiResult = value;
-   })
+    this.clean();
+    this.apiService.read().subscribe({
+      next: (value) => {
+        this.apiResult = {
+          success : true, 
+          data: value
+        }
+      },
+      error: (error) => {
+        this.apiResult = {
+          success : false, 
+          data: error
+        }
+      }
+     } 
+    )
  }
 
   async getUserInfo() {
+    this.clean();
     this.authService.getUserInfo().subscribe(value => {
       this.userInfo = value;
     })
+  }
+
+  clean() {
+    this.apiResult = null;
+    this.userInfo = null;
   }
 }
 

@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { AuthService } from './auth.service';
 
@@ -16,7 +16,7 @@ export class ApiService {
      const token = this.authService.getToken();
       return this.http.get(`${environment.apiURL}/manage`, {
         headers: { Authorization: `Bearer ${token}` }
-      })
+      }).pipe(catchError(this.handleError))
     }
 
     read(): Observable<any> {
@@ -24,6 +24,11 @@ export class ApiService {
        return this.http.get(`${environment.apiURL}/read`, {
          headers: { Authorization: `Bearer ${token}` }
        })
+       .pipe(catchError(this.handleError))
      }
+
+     private handleError(error: HttpErrorResponse) {
+       return throwError(() => error.message); 
+    }
 
 }
