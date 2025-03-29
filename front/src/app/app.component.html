@@ -1,0 +1,27 @@
+<button *ngIf="!isLoggedIn" (click)="login()">Log in</button>
+<button *ngIf="isLoggedIn" (click)="logout()">Log out</button>
+
+<button *ngIf="isLoggedIn" (click)="getUserInfo()">User Info</button>
+<button *ngIf="isLoggedIn" (click)="manage()">Manage</button>
+<button *ngIf="isLoggedIn" (click)="read()">Read</button>
+
+<hr>
+
+<div *ngIf="isLoggedIn" style="margin-top: 10px;">
+  
+  <div *ngIf="userInfo">
+    <h2>User info</h2>
+    <p><strong>Username:</strong> {{ userInfo.preferred_username }}</p>
+    <p><strong>Email:</strong> {{ userInfo.email }}</p>
+    <p><strong>First Name:</strong> {{ userInfo.given_name }}</p>
+    <p><strong>Last Name:</strong> {{ userInfo.family_name }}</p>
+  </div>
+
+  <div *ngIf="apiResult">
+    <h2>Api result</h2>
+    <p *ngIf="apiResult.success">{{apiResult.data | json}}</p>
+    <p *ngIf="!apiResult.success"  style=" color: red;">{{apiResult.data}}</p>
+  </div>
+</div>
+
+
