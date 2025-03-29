@@ -15,8 +15,7 @@ public class Program
             options.AddPolicy(name: "AllowAngularClient",
                               policy =>
                               {
-                                 // policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
-                                  policy.WithOrigins("http://localhost:5293").AllowAnyHeader().AllowAnyMethod();
+                                 policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
                               });
         });
 
